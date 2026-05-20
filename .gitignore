@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+*.log
+
+# Node
+node_modules/
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store/
+
+# Build output
+dist/
+build/
+.next/
+.parcel-cache/
+.cache/
+
+# Env files
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Editors and tooling
+.vscode/
+.idea/
+.claude/
+.cursor/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
