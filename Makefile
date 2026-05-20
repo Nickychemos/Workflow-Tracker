@@ -66,7 +66,7 @@ test: db-up ## Run pytest
 check: ## Run Django system checks
 	$(MANAGE) check
 
-seed: ## Seed sample applications (available after commit 10)
+seed: ## Seed sample applications (idempotent, add --force to wipe and reseed)
 	$(MANAGE) seed_sample_applications
 
 # ----- Postgres in docker --------------------------------------------------
