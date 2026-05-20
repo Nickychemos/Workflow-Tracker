@@ -1,0 +1,7 @@
+Django>=5.0,<6.0
+django-ninja>=1.0
+django-cors-headers
+psycopg[binary]>=3.1
+python-dotenv
+dj-database-url
+faker
