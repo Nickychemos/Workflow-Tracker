@@ -60,7 +60,7 @@ dbshell: ## Open a psql shell on the workflow database
 superuser: ## Create a Django superuser
 	$(MANAGE) createsuperuser
 
-test: ## Run pytest
+test: db-up ## Run pytest
 	cd backend && ../$(VENV_PYTEST) -q
 
 check: ## Run Django system checks
