@@ -71,7 +71,7 @@ DATABASES = {
     "default": dj_database_url.config(
         default=os.environ.get(
             "DATABASE_URL",
-            "postgres://workflow:workflow@localhost:5433/workflow",
+            "postgres://workflow:workflow@localhost:5434/workflow",
         ),
         conn_max_age=60,
     ),

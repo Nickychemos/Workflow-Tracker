@@ -71,8 +71,8 @@ seed: ## Seed sample applications (available after commit 10)
 
 # ----- Postgres in docker --------------------------------------------------
 
-db-up: ## Start Postgres in docker (compose service: db)
-	docker compose up -d db
+db-up: ## Start Postgres in docker, waits until healthy
+	docker compose up -d --wait db
 
 db-down: ## Stop Postgres
 	docker compose stop db
