@@ -4,7 +4,7 @@ A small workflow tracker for applications.
 
 **Live demo**: _coming after deployment_
 
-**Walkthrough video**: _coming with submission_
+**Walkthrough video**: https://www.loom.com/share/6040e180c09b4c08a6d9eb2fc2658fba
 
 ## Quick start
 
