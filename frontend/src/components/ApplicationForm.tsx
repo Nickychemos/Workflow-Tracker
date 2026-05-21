@@ -42,7 +42,7 @@ export function ApplicationForm({
   })
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form noValidate onSubmit={handleSubmit(onSubmit)}>
       <div className="grid gap-6 pb-2 md:grid-cols-2">
         <Section title="Applicant information">
           <FieldGroup

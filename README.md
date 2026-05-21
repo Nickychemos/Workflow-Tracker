@@ -19,6 +19,32 @@ Open http://localhost:5173. The list shows six seeded applications, one in each 
 
 Both commands handle setup on first run. `make run` creates the Python venv, installs backend deps, brings up Postgres in docker, applies migrations, and starts the dev server. `make fe-dev` installs npm deps and starts Vite. No extra steps needed.
 
+## Screenshots
+
+### Application list
+
+![List page showing all six statuses](docs/screenshots/01-list.png)
+
+Six seeded applications, one in each status. Search, status, and type filters at the top.
+
+### Validation on the create form
+
+![Create form with validation error](docs/screenshots/02-create-validation.png)
+
+Client side Zod validation catches a bad email before any request goes out.
+
+### Application detail, Under Review
+
+![Detail page with reviewer actions](docs/screenshots/03-detail-under-review.png)
+
+An Under Review application. The Actions card shows all three reviewer options.
+
+### Reviewer decision
+
+![Reviewer decision form](docs/screenshots/04-review-reject.png)
+
+Reviewer rejecting an application. The comment is required, the sticky footer holds Cancel and Record decision.
+
 ## Stack
 
 | Area | Tools |
