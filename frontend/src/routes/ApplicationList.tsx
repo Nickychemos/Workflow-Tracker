@@ -173,9 +173,22 @@ export function ApplicationList() {
                       {formatDate(app.created_at)}
                     </TableCell>
                     <TableCell className="text-right">
-                      <Button asChild variant="link" size="sm">
-                        <Link to={`/applications/${app.id}`}>View</Link>
-                      </Button>
+                      <div className="flex items-center justify-end gap-1">
+                        <Button asChild variant="link" size="sm">
+                          <Link to={`/applications/${app.id}`}>View</Link>
+                        </Button>
+                        {app.status === "DRAFT" ||
+                        app.status === "NEED_MORE_INFO" ? (
+                          <>
+                            <span className="text-slate-300">·</span>
+                            <Button asChild variant="link" size="sm">
+                              <Link to={`/applications/${app.id}/edit`}>
+                                Edit
+                              </Link>
+                            </Button>
+                          </>
+                        ) : null}
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}
