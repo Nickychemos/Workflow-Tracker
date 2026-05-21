@@ -66,8 +66,11 @@ test: db-up ## Run pytest
 check: ## Run Django system checks
 	$(MANAGE) check
 
-seed: ## Seed sample applications (idempotent, add --force to wipe and reseed)
+seed: ## Seed sample applications (idempotent, skips if data exists)
 	$(MANAGE) seed_sample_applications
+
+seed-force: ## Wipe applications and reseed from scratch
+	$(MANAGE) seed_sample_applications --force
 
 # ----- Postgres in docker --------------------------------------------------
 

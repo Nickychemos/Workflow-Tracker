@@ -32,74 +32,65 @@ class Command(BaseCommand):
 
         samples = [
             dict(
-                applicant_name="Wangari Maathai",
-                applicant_email="wangari@greenbelt.example",
-                company_name="Green Belt Movement",
+                applicant_name="John Mwangi",
+                applicant_email="john@mwangihardware.example",
+                company_name="Mwangi Hardware",
                 application_type=ApplicationType.RECORDATION,
-                description=(
-                    "Recordation for the environmental advocacy programmes "
-                    "we run across the country."
-                ),
+                description="First time recordation of the hardware shop.",
                 status=ApplicationStatus.DRAFT,
             ),
             dict(
-                applicant_name="Tom Mboya",
-                applicant_email="tom@africanaffairs.example",
-                company_name="African Affairs Ltd",
+                applicant_name="Grace Wanjiru",
+                applicant_email="grace@wanjirusalon.example",
+                company_name="Wanjiru Salon and Spa",
                 application_type=ApplicationType.RENEWAL,
-                description="Annual renewal of operating permits and licences.",
+                description="Annual renewal of the trading licence.",
                 status=ApplicationStatus.SUBMITTED,
                 submitted_at=now,
             ),
             dict(
-                applicant_name="Lupita Nyong'o",
-                applicant_email="lupita@yalafilm.example",
-                company_name="Yala Film Productions",
+                applicant_name="David Kiplagat",
+                applicant_email="david@highlandcoffee.example",
+                company_name="Highland Coffee Traders",
                 application_type=ApplicationType.CHANGE_OF_NAME,
-                description="Renaming the production company to reflect new branding.",
+                description="Renaming the business to reflect the new shop premises.",
                 status=ApplicationStatus.UNDER_REVIEW,
                 submitted_at=now,
             ),
             dict(
-                applicant_name="Eliud Kipchoge",
-                applicant_email="eliud@ngongmar.example",
-                company_name="Ngong Marathon Co",
+                applicant_name="Mary Achieng",
+                applicant_email="mary@achiengtailors.example",
+                company_name="Achieng Tailors",
                 application_type=ApplicationType.CHANGE_OF_OWNERSHIP,
                 description=(
-                    "Transfer of ownership to new shareholders following "
-                    "internal restructuring."
+                    "Moving from sole proprietorship to a partnership with two new partners."
                 ),
                 status=ApplicationStatus.NEED_MORE_INFO,
                 reviewer_comment=(
-                    "Please provide the updated shareholder agreement and a "
-                    "current tax compliance certificate."
+                    "Please attach the updated partnership agreement and the KRA PIN for each partner."
                 ),
                 submitted_at=now,
                 reviewed_at=now,
             ),
             dict(
-                applicant_name="Mekatilili Wa Menza",
-                applicant_email="mekatilili@coastal.example",
-                company_name="Coastal Heritage Trust",
+                applicant_name="Peter Otieno",
+                applicant_email="peter@otienoautospares.example",
+                company_name="Otieno Auto Spares",
                 application_type=ApplicationType.RECORDATION,
-                description=(
-                    "Recordation of the historical site preservation programme "
-                    "along the coast."
-                ),
+                description="Recordation of the auto spares shop in Kisumu.",
                 status=ApplicationStatus.APPROVED,
                 submitted_at=now,
                 reviewed_at=now,
             ),
             dict(
-                applicant_name="Dedan Kimathi",
-                applicant_email="dedan@nyandarua.example",
-                company_name="Nyandarua Highlands Ltd",
+                applicant_name="Susan Wambui",
+                applicant_email="susan@wambuiboutique.example",
+                company_name="Wambui Boutique",
                 application_type=ApplicationType.DISCONTINUATION,
-                description="Discontinuation of dormant business operations.",
+                description="Closing down the boutique due to relocation.",
                 status=ApplicationStatus.REJECTED,
                 reviewer_comment=(
-                    "Outstanding tax obligations must be cleared before "
-                    "discontinuation can be processed."
+                    "Outstanding tax obligations must be cleared before discontinuation can be processed."
                 ),
                 submitted_at=now,
                 reviewed_at=now,
