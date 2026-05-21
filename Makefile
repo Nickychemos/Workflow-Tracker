@@ -8,7 +8,7 @@
 #   make setup      # create the venv, install deps, copy .env
 
 PYTHON       := python3
-PORT         := 8000
+PORT         := 8001
 VENV         := backend/.venv
 VENV_PYTHON  := $(VENV)/bin/python
 VENV_PIP     := $(VENV)/bin/pip

@@ -1,6 +1,5 @@
 import { useEffect } from "react"
 import {
-  Link,
   Navigate,
   useNavigate,
   useParams,
@@ -10,9 +9,9 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { toast } from "sonner"
-import { ChevronLeft } from "lucide-react"
 import type { AxiosError } from "axios"
 
+import { Breadcrumbs } from "@/components/Breadcrumbs"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -153,15 +152,18 @@ export function ApplicationReview() {
   }
 
   return (
-    <div className="space-y-6">
-      <div>
-        <Link
-          to={`/applications/${id}`}
-          className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-slate-700"
-        >
-          <ChevronLeft className="h-4 w-4" />
-          Back to application
-        </Link>
+    <div className="space-y-6 pb-20">
+      <div className="sticky top-0 z-10 -mt-6 border-b border-slate-100 bg-slate-50 pt-6 pb-4">
+        <Breadcrumbs
+          items={[
+            { label: "Applications", to: "/" },
+            {
+              label: application.tracking_number,
+              to: `/applications/${id}`,
+            },
+            { label: "Reviewer decision" },
+          ]}
+        />
         <div className="mt-2 flex flex-wrap items-center gap-3">
           <h1 className="text-2xl font-semibold text-slate-900">
             Reviewer decision
@@ -169,8 +171,7 @@ export function ApplicationReview() {
           <StatusBadge status={application.status} />
         </div>
         <p className="mt-1 text-sm text-slate-500">
-          {application.tracking_number} · {application.applicant_name} ·{" "}
-          {application.company_name}
+          {application.applicant_name} · {application.company_name}
         </p>
       </div>
 
@@ -235,7 +236,7 @@ export function ApplicationReview() {
             <CardTitle>
               Comment
               {commentRequired ? (
-                <span className="ml-1 text-rose-500">*</span>
+                <span className="ml-1 text-indigo-600">*</span>
               ) : (
                 <span className="ml-1 text-xs font-normal text-slate-400">
                   (optional)
@@ -261,7 +262,7 @@ export function ApplicationReview() {
           </CardContent>
         </Card>
 
-        <div className="flex items-center justify-end gap-2">
+        <div className="fixed bottom-0 left-0 right-0 z-30 flex items-center justify-end gap-2 border-t border-slate-200 bg-white px-6 py-3 shadow-[0_-2px_8px_rgba(0,0,0,0.06)] md:left-60">
           <Button
             type="button"
             variant="outline"

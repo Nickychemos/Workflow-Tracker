@@ -2,12 +2,6 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
@@ -48,96 +42,86 @@ export function ApplicationForm({
   })
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <div className="grid gap-6 md:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Applicant</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <FieldGroup
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="grid gap-6 pb-2 md:grid-cols-2">
+        <Section title="Applicant information">
+          <FieldGroup
+            id="applicant_name"
+            label="Name"
+            required
+            error={errors.applicant_name?.message}
+          >
+            <Input
               id="applicant_name"
-              label="Name"
-              required
-              error={errors.applicant_name?.message}
-            >
-              <Input
-                id="applicant_name"
-                placeholder="Full name"
-                {...register("applicant_name")}
-              />
-            </FieldGroup>
-            <FieldGroup
+              placeholder="Full name"
+              {...register("applicant_name")}
+            />
+          </FieldGroup>
+          <FieldGroup
+            id="applicant_email"
+            label="Email"
+            required
+            error={errors.applicant_email?.message}
+          >
+            <Input
               id="applicant_email"
-              label="Email"
-              required
-              error={errors.applicant_email?.message}
-            >
-              <Input
-                id="applicant_email"
-                type="email"
-                placeholder="applicant@example.com"
-                {...register("applicant_email")}
-              />
-            </FieldGroup>
-            <FieldGroup
+              type="email"
+              placeholder="applicant@example.com"
+              {...register("applicant_email")}
+            />
+          </FieldGroup>
+          <FieldGroup
+            id="company_name"
+            label="Company"
+            required
+            error={errors.company_name?.message}
+          >
+            <Input
               id="company_name"
-              label="Company"
-              required
-              error={errors.company_name?.message}
-            >
-              <Input
-                id="company_name"
-                placeholder="Company name"
-                {...register("company_name")}
-              />
-            </FieldGroup>
-          </CardContent>
-        </Card>
+              placeholder="Company name"
+              {...register("company_name")}
+            />
+          </FieldGroup>
+        </Section>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Application details</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <FieldGroup
+        <Section title="Application details">
+          <FieldGroup
+            id="application_type"
+            label="Type"
+            required
+            error={errors.application_type?.message}
+          >
+            <select
               id="application_type"
-              label="Type"
-              required
-              error={errors.application_type?.message}
+              {...register("application_type")}
+              className="h-10 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-700 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
             >
-              <select
-                id="application_type"
-                {...register("application_type")}
-                className="h-9 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-700 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
-              >
-                <option value="">Select a type</option>
-                {Object.entries(APPLICATION_TYPE_LABELS).map(
-                  ([value, label]) => (
-                    <option key={value} value={value}>
-                      {label}
-                    </option>
-                  ),
-                )}
-              </select>
-            </FieldGroup>
-            <FieldGroup
+              <option value="">Select a type</option>
+              {Object.entries(APPLICATION_TYPE_LABELS).map(
+                ([value, label]) => (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                ),
+              )}
+            </select>
+          </FieldGroup>
+          <FieldGroup
+            id="description"
+            label="Description"
+            error={errors.description?.message}
+          >
+            <Textarea
               id="description"
-              label="Description"
-              error={errors.description?.message}
-            >
-              <Textarea
-                id="description"
-                rows={6}
-                placeholder="Add any details that help the reviewer"
-                {...register("description")}
-              />
-            </FieldGroup>
-          </CardContent>
-        </Card>
+              rows={6}
+              placeholder="Add any details that help the reviewer"
+              {...register("description")}
+            />
+          </FieldGroup>
+        </Section>
       </div>
 
-      <div className="flex items-center justify-end gap-2">
+      <div className="mt-6 flex items-center justify-end gap-2">
         <Button
           type="button"
           variant="outline"
@@ -151,6 +135,22 @@ export function ApplicationForm({
         </Button>
       </div>
     </form>
+  )
+}
+
+interface SectionProps {
+  title: string
+  children: React.ReactNode
+}
+
+function Section({ title, children }: SectionProps) {
+  return (
+    <div className="rounded-[10px] border border-slate-200 bg-white p-6">
+      <h3 className="mb-5 border-b border-slate-200 pb-3 text-[15px] font-semibold text-slate-900">
+        {title}
+      </h3>
+      <div className="space-y-5">{children}</div>
+    </div>
   )
 }
 
@@ -171,9 +171,15 @@ function FieldGroup({
 }: FieldGroupProps) {
   return (
     <div className="space-y-1.5">
-      <Label htmlFor={id}>
-        {label}
-        {required ? <span className="ml-0.5 text-rose-500">*</span> : null}
+      <Label htmlFor={id} className="flex items-center gap-1.5 text-[13px]">
+        <span className="font-medium text-slate-700">{label}</span>
+        {required ? (
+          <span className="text-indigo-600" aria-hidden="true">
+            *
+          </span>
+        ) : (
+          <span className="font-normal text-slate-400">(optional)</span>
+        )}
       </Label>
       {children}
       {error ? <p className="text-xs text-rose-600">{error}</p> : null}

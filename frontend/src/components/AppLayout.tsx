@@ -1,20 +1,25 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, useLocation } from "react-router-dom"
 
+import { cn } from "@/lib/utils"
 import { Sidebar } from "./Sidebar"
-import { Header } from "./Header"
 
 export function AppLayout() {
+  const location = useLocation()
+  const isListPage = location.pathname === "/"
+
   return (
-    <div className="flex min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50">
       <Sidebar />
-      <div className="flex flex-1 flex-col">
-        <Header />
-        <main className="flex-1 px-6 py-6">
-          <div className="mx-auto max-w-6xl">
-            <Outlet />
-          </div>
-        </main>
-      </div>
+      <main
+        className={cn(
+          "px-6 py-6 md:ml-60",
+          isListPage ? "bg-white" : "bg-slate-50",
+        )}
+      >
+        <div className="mx-auto max-w-6xl">
+          <Outlet />
+        </div>
+      </main>
     </div>
   )
 }

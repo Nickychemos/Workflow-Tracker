@@ -15,6 +15,14 @@ const buttonVariants = cva(
         ghost: "text-slate-700 hover:bg-slate-100",
         destructive: "bg-rose-600 text-white hover:bg-rose-700",
         success: "bg-emerald-600 text-white hover:bg-emerald-700",
+        "info-soft":
+          "border border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100",
+        "success-soft":
+          "border border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100",
+        "warning-soft":
+          "border border-amber-200 bg-amber-50 text-amber-700 hover:bg-amber-100",
+        "destructive-soft":
+          "border border-rose-200 bg-rose-50 text-rose-700 hover:bg-rose-100",
         link: "text-indigo-600 underline-offset-4 hover:underline",
       },
       size: {

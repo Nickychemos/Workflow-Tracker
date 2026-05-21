@@ -1,10 +1,10 @@
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { toast } from "sonner"
-import { ChevronLeft } from "lucide-react"
 import type { AxiosError } from "axios"
 
 import { ApplicationForm } from "@/components/ApplicationForm"
+import { Breadcrumbs } from "@/components/Breadcrumbs"
 import { api } from "@/lib/api"
 import { qk } from "@/lib/queryKeys"
 import type { ApplicationFormValues } from "@/schemas/application"
@@ -39,21 +39,16 @@ export function ApplicationCreate() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <Link
-          to="/"
-          className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-slate-700"
-        >
-          <ChevronLeft className="h-4 w-4" />
-          Applications
-        </Link>
+      <div className="sticky top-0 z-10 -mt-6 border-b border-slate-100 bg-slate-50 pt-6 pb-4">
+        <Breadcrumbs
+          items={[
+            { label: "Applications", to: "/" },
+            { label: "New application" },
+          ]}
+        />
         <h1 className="mt-2 text-2xl font-semibold text-slate-900">
           New application
         </h1>
-        <p className="mt-1 text-sm text-slate-500">
-          Fill in the applicant and application details. The tracking number is
-          generated for you.
-        </p>
       </div>
       <ApplicationForm
         submitLabel="Create application"

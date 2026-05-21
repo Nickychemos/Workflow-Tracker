@@ -52,7 +52,7 @@ export const TableRow = forwardRef<
   <tr
     ref={ref}
     className={cn(
-      "transition-colors hover:bg-slate-50 data-[state=selected]:bg-slate-100",
+      "group transition-colors hover:bg-slate-50 data-[state=selected]:bg-slate-100",
       className,
     )}
     {...props}
@@ -67,7 +67,7 @@ export const TableHead = forwardRef<
   <th
     ref={ref}
     className={cn(
-      "h-10 px-4 text-left align-middle text-xs font-medium uppercase tracking-wider text-slate-500",
+      "h-10 px-4 text-left align-middle text-[11px] font-bold uppercase tracking-wider text-slate-900",
       className,
     )}
     {...props}

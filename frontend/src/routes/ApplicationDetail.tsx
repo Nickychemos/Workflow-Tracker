@@ -1,11 +1,11 @@
-import { Link, Navigate, useParams } from "react-router-dom"
+import { Navigate, useParams } from "react-router-dom"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { toast } from "sonner"
-import { ChevronLeft } from "lucide-react"
 import type { AxiosError } from "axios"
 import type { ReactNode } from "react"
 
 import { ActionBar } from "@/components/ActionBar"
+import { Breadcrumbs } from "@/components/Breadcrumbs"
 import { StatusBadge } from "@/components/StatusBadge"
 import {
   Card,
@@ -100,20 +100,26 @@ export function ApplicationDetail() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <Link
-          to="/"
-          className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-slate-700"
-        >
-          <ChevronLeft className="h-4 w-4" />
-          Applications
-        </Link>
+      <div className="sticky top-0 z-10 -mt-6 border-b border-slate-100 bg-slate-50 pt-6 pb-4">
+        <Breadcrumbs
+          items={[
+            { label: "Applications", to: "/" },
+            { label: application.tracking_number },
+          ]}
+        />
         <div className="mt-2 flex flex-wrap items-center gap-3">
           <h1 className="font-mono text-2xl font-semibold text-slate-900">
             {application.tracking_number}
           </h1>
           <StatusBadge status={application.status} />
         </div>
+        <p className="mt-1 text-sm text-slate-500">
+          {application.applicant_name}
+          {" · "}
+          {application.company_name}
+          {" · "}
+          {APPLICATION_TYPE_LABELS[application.application_type]}
+        </p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
@@ -203,9 +209,9 @@ interface FieldProps {
 
 function Field({ label, children }: FieldProps) {
   return (
-    <div className="grid grid-cols-[100px_1fr] items-baseline gap-3 text-sm">
+    <div className="flex items-baseline justify-between gap-4 text-sm">
       <dt className="text-slate-500">{label}</dt>
-      <dd className="text-slate-900">{children}</dd>
+      <dd className="text-right text-slate-900">{children}</dd>
     </div>
   )
 }

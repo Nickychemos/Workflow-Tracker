@@ -24,13 +24,17 @@ export function ActionBar({
   if (status === "DRAFT") {
     return (
       <div className="flex flex-wrap gap-2">
-        <Button asChild variant="outline">
+        <Button asChild variant="info-soft">
           <Link to={`/applications/${id}/edit`}>
             <Pencil className="h-4 w-4" />
             Edit
           </Link>
         </Button>
-        <Button onClick={onSubmit} disabled={isSubmitting}>
+        <Button
+          variant="info-soft"
+          onClick={onSubmit}
+          disabled={isSubmitting}
+        >
           <Send className="h-4 w-4" />
           {isSubmitting ? "Submitting..." : "Submit"}
         </Button>
@@ -41,13 +45,17 @@ export function ActionBar({
   if (status === "NEED_MORE_INFO") {
     return (
       <div className="flex flex-wrap gap-2">
-        <Button asChild variant="outline">
+        <Button asChild variant="info-soft">
           <Link to={`/applications/${id}/edit`}>
             <Pencil className="h-4 w-4" />
             Edit
           </Link>
         </Button>
-        <Button onClick={onSubmit} disabled={isSubmitting}>
+        <Button
+          variant="info-soft"
+          onClick={onSubmit}
+          disabled={isSubmitting}
+        >
           <Send className="h-4 w-4" />
           {isSubmitting ? "Submitting..." : "Resubmit"}
         </Button>
@@ -57,9 +65,13 @@ export function ActionBar({
 
   if (status === "SUBMITTED") {
     return (
-      <Button onClick={onStartReview} disabled={isStartingReview}>
+      <Button
+        variant="info-soft"
+        onClick={onStartReview}
+        disabled={isStartingReview}
+      >
         <ShieldCheck className="h-4 w-4" />
-        {isStartingReview ? "Starting review..." : "Start review"}
+        {isStartingReview ? "Starting Review..." : "Start Review"}
       </Button>
     )
   }
@@ -67,19 +79,19 @@ export function ActionBar({
   if (status === "UNDER_REVIEW") {
     return (
       <div className="flex flex-wrap gap-2">
-        <Button asChild variant="success">
+        <Button asChild variant="success-soft">
           <Link to={`/applications/${id}/review?decision=APPROVED`}>
             <Check className="h-4 w-4" />
             Approve
           </Link>
         </Button>
-        <Button asChild variant="outline">
+        <Button asChild variant="warning-soft">
           <Link to={`/applications/${id}/review?decision=NEED_MORE_INFO`}>
             <AlertCircle className="h-4 w-4" />
-            Need more info
+            Need More Information
           </Link>
         </Button>
-        <Button asChild variant="destructive">
+        <Button asChild variant="destructive-soft">
           <Link to={`/applications/${id}/review?decision=REJECTED`}>
             <X className="h-4 w-4" />
             Reject
