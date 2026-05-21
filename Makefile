@@ -102,10 +102,13 @@ lint: ## Lint the backend with ruff
 # ----- frontend ------------------------------------------------------------
 
 fe-dev: ## Start the Vite dev server
-	cd frontend && pnpm dev
+	cd frontend && npm run dev
 
 fe-build: ## Build the frontend for production
-	cd frontend && pnpm build
+	cd frontend && npm run build
+
+fe-install: ## Install frontend dependencies
+	cd frontend && npm install
 
 # ----- aliases -------------------------------------------------------------
 
