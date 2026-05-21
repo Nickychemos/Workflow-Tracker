@@ -2,6 +2,8 @@
 
 A small workflow tracker for applications.
 
+**Author**: Nicky Chepteck Chemos · nickyhemos@gmail.com
+
 **Walkthrough video**: https://www.loom.com/share/6040e180c09b4c08a6d9eb2fc2658fba
 
 ## Quick start
