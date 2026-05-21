@@ -19,7 +19,7 @@ export function Sidebar() {
   return (
     <aside className="fixed inset-y-0 left-0 z-20 hidden w-60 flex-col border-r border-slate-200 bg-slate-50 md:flex">
       <div className="flex h-14 items-center border-b border-slate-200 px-4">
-        <div className="flex h-9 w-9 items-center justify-center rounded-md bg-indigo-600 text-white">
+        <div className="flex h-9 w-9 items-center justify-center rounded-md bg-slate-200 text-slate-700">
           <Workflow className="h-5 w-5" />
         </div>
         <div className="ml-3">
