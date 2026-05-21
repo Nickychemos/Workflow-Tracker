@@ -101,13 +101,16 @@ lint: ## Lint the backend with ruff
 
 # ----- frontend ------------------------------------------------------------
 
-fe-dev: ## Start the Vite dev server
+fe-dev: frontend/node_modules ## Start the Vite dev server
 	cd frontend && npm run dev
 
-fe-build: ## Build the frontend for production
+fe-build: frontend/node_modules ## Build the frontend for production
 	cd frontend && npm run build
 
-fe-install: ## Install frontend dependencies
+fe-install: ## Force a clean install of frontend dependencies
+	cd frontend && npm install
+
+frontend/node_modules:
 	cd frontend && npm install
 
 # ----- aliases -------------------------------------------------------------
